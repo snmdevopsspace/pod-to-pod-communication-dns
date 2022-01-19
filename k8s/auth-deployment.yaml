@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snmse-auth-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: snmse-auth
+  template:
+    metadata:
+      labels:
+        app: snmse-auth
+    spec:
+      containers:
+        - name: snmse-auth
+          image: snmmaurya/snmse-auth:latest

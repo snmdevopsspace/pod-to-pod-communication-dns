@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snmse-users-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: snmse-users
+  template:
+    metadata:
+      labels:
+        app: snmse-users
+    spec:
+      containers:
+        - name: snmse-users
+          image: snmmaurya/snmse-users:latest
+          env:
+            - name: AUTH_ADDRESS_HOST
+              value: "snmse-auth-service.default" # service name as dns system
+            - name: AUTH_ADDRESS_PORT
+              value: "5002"
